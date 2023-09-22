@@ -118,6 +118,7 @@ export default function BasicModal({}) {
                 <div
                   style={{
                     display: "flex",
+                    justifyContent:"center",
 
                     alignItems: "center",
                   }}
@@ -126,7 +127,8 @@ export default function BasicModal({}) {
                     style={{
                       width: "120px",
 
-                      margin: widthTotal < "600" ? "auto" : "",
+                 
+                     
                     }}
                     src={UPSCLogo}
                     alt="d"
@@ -134,6 +136,7 @@ export default function BasicModal({}) {
                   <p
                     style={{
                       fontFamily: "Inter",
+                    
                       fontStyle: "normal",
                       fontWeight: "600",
                       color: "#2385C7",
@@ -207,9 +210,9 @@ export default function BasicModal({}) {
                         backgroundColor: "white",
 
                         display: "flex",
-                      
-                        padding:"0px",
-                        margin:"0px",
+
+                        padding: "0px",
+                        margin: "0px",
                         justifyContent: "center",
                         marginTop: "20px",
                         fontFamily: "Inter",
@@ -217,7 +220,6 @@ export default function BasicModal({}) {
                         fontWeight: 500,
                         textAlign: "left",
                         fontSize: "14.5px",
-                       
                       }}
                     >
                       Invalid Credentials
@@ -228,16 +230,30 @@ export default function BasicModal({}) {
                   style={{
                     width: "100%",
                     display: "flex",
-                   
-                    marginTop: error ? "1%" : "15%",
+                    position: "relative",
+
+                    marginTop: error ? "2%" : "15%",
 
                     justifyContent: "center",
                   }}
                 >
+                  {/* {loading&& <div
+                      style={{
+                        position: "absolute",
+                        backgroundColor: "white",
+                        width: "100%",
+                        height: "105%",
+                        border:"20px solid white",
+
+                      
+                        zIndex: 9999,
+                      }}
+                    ></div>
+               } */}
                   <GoogleLogin
                     clientId="555163836458-ekq299o1li21bvqavnppmuqjt66vv95o.apps.googleusercontent.com"
                     onSuccess={(response) => {
-                      console.log(response, " line 240")
+                      console.log(response, " line 240");
                       setLoading(true);
                       fetch(
                         " https://app.joshtalks.org/api/skill/v1/forms/get_info/",
@@ -261,7 +277,7 @@ export default function BasicModal({}) {
 
                             setTimeout(() => {
                               setError(false);
-                            }, 1500);
+                            }, 2000);
 
                             setLoading(false);
                           } else {
@@ -278,7 +294,7 @@ export default function BasicModal({}) {
 
                               setTimeout(() => {
                                 setError(false);
-                              }, 1500);
+                              }, 2000);
                               setLoading(false);
                             }
                           }
@@ -291,28 +307,32 @@ export default function BasicModal({}) {
                 </div>
 
                 {loading && (
-                  <div style={{
-                    display:"flex",
-                    justifyContent: "center",
-                    marginTop:"60px"
-                  }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginTop: "60px",
+                    }}
+                  >
                     <div
                       style={{
                         display: "flex",
                         width: "fit-content",
-                        alignItems:"center"
+                        alignItems: "center",
                       }}
                     >
-                      <CircularProgress  style={{
-                        width:"20px",
-                        height:"20px"
-                      }}/>
+                      <CircularProgress
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                        }}
+                      />
                       <p
                         style={{
                           marginLeft: "20px",
                           fontFamily: "Inter",
                           fontStyle: "normal",
-                          color:"#2385C7",
+                          color: "#2385C7",
                           fontWeight: 500,
                           textAlign: "left",
                           fontSize: "14.5px",
